@@ -1,22 +1,17 @@
 package top.tytcc.learn.dao;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 /**
- * 一个简单的dto实体类
+ * 一个简单的dto实体类.
  */
+@Getter
+@Setter
+@AllArgsConstructor
 public class User {
   private final String name;
   private final String password;
 
-  public String getName() {
-    return name;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public User(String name, String password) {
-    this.name = name;
-    this.password = password;
-  }
 }
