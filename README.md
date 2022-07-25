@@ -7,6 +7,8 @@ from zero to a project
 1. 使用lombok来大量减少胶水代码  
 https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.24
 将依赖添加到`pom.xml`的`dependency`中
+2.重写dto`User.class`  
+Lombokz注解详细信息： https://zhuanlan.zhihu.com/p/32779910
 ***如果注解报红，可以利用idea自动检查以解决**
 2. 安装checkstyle插件，并配置java代码风格。  
 https://checkstyle.sourceforge.io/google_style.html  
