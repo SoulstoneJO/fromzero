@@ -13,4 +13,8 @@ https://checkstyle.sourceforge.io/google_style.html
    ** 一般来说在团队合作中，代码风格统一不仅可以方便代码review，还可以减少很多不必要的麻烦。当设置好checkstyle和相应的
 code Style之后可以利用idea的功能将idea的配置全部导出，以方便其它团队成员使用。双击shift,呼出快捷命令，输入`export`,找到
 `export settings`以导出配置。双击shift,呼出快捷命令，输入`import`,找到`import settings`以导入配置。注意，checkstyle插件
-需要额外下载.
+需要额外安装。 
+3. code Style设置  
+![pic6](/static/pic6.png)
+4. CheckStyle设置  
+![pic7](/static/pic7.png)
