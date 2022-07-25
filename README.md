@@ -1,24 +1,14 @@
 # fromzero
 from zero to a project
 
-## 第0步：创建一个项目
-### 在GitHub上创建一个空仓库(repository)
-1. 登录`GitHub`，点击绿色的`new`按钮，跳转到仓库新建页面
-![new repo](/static/pic1.png)
-***gitignore文件存放git不需要管理的文件目录，稍后设置**
-2. 创建成功后利用`Open with Github desktop`打开。
-![download project](/static/pic2.png)
-
-***`github desktop`下载地址** https://desktop.github.com/
-
-### 初始化一个Spring项目
-1. 前往Spring初始化页面配置项目并点击`GENERATE`生成按钮下载。
-![new spring projcet](/static/pic3.png)
-
-***`spring initializr`地址** https://start.spring.io/
-
-2. 解压缩下载的文件
-![spring projcet](/static/pic4.png)
-
-3. 在Github Desktop菜单栏上，点击`Show in Exployer`打开文件目录
-![spring projcet](/static/pic5.png)
+## 第1步：与前端通信
+1. 在Application入口方法同级目录，创建一个package。  
+![pic6](static/pic6.png)
+2. 在package中创建controller(MVC架构)  
+![pic7](static/pic7.png)
+3. 创建Dto package(User.class) 
+https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%AF%B9%E8%B1%A1
+4. 使用`postman`来进行测试(测试文件可以从postman文件导入)  
+![pic8](static/pic8.png)  
+![pic9](static/pic9.png)
+* Http相关知识 **https://developer.mozilla.org/zh-CN/docs/Web/HTTP**
