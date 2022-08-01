@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql:
+    container_name: database
+    # image: mysql:8.0 # linux/amd64
+    image: arm64v8/mysql:8.0 # arm64 for apple silicon
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf # extra settings
+    ports:
+      - 3306:3306
