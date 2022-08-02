@@ -1,2 +1,14 @@
-
-
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/from_zero
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  # xml文件位置
+  mapper-locations: classpath:**/mapper/*/*.xml
+  # log配置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

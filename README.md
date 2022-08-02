@@ -2,21 +2,58 @@
 
 from zero to a project
 
-## 第2步：多人协作(代码风格Checkstyle)和lombok
+## 第4步： 持久化
+1. 在pom中添加mybatis依赖和mybatis generator plugin插件。
+```
+<!--	SpringBoot 与 mybatis 整合依赖	-->
+<!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+<dependency>
+   <groupId>org.mybatis.spring.boot</groupId>
+   <artifactId>mybatis-spring-boot-starter</artifactId>
+   <version>2.1.3</version>
+</dependency>
 
-1. 使用lombok来大量减少胶水代码  
-https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.24
-将依赖添加到`pom.xml`的`dependency`中
-2.重写dto`User.class`  
-Lombokz注解详细信息： https://zhuanlan.zhihu.com/p/32779910
-***如果注解报红，可以利用idea自动检查以解决**
-2. 安装checkstyle插件，并配置java代码风格。  
-https://checkstyle.sourceforge.io/google_style.html  
-   ** 一般来说在团队合作中，代码风格统一不仅可以方便代码review，还可以减少很多不必要的麻烦。当设置好checkstyle和相应的
-code Style之后可以利用idea的功能将idea的配置全部导出，以方便其它团队成员使用。双击shift,呼出快捷命令，输入`export`,找到
-`export settings`以导出配置。双击shift,呼出快捷命令，输入`import`,找到`import settings`以导入配置。注意，checkstyle插件
-需要额外安装。 
-3. code Style设置  
-![pic6](/static/pic6.png)
-4. CheckStyle设置  
-![pic7](/static/pic7.png)
+<!--	java 对 mysql 的数据库连接依赖 	-->
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<dependency>
+   <groupId>mysql</groupId>
+   <artifactId>mysql-connector-java</artifactId>
+   <version>8.0.29</version>
+</dependency>
+```
+```
+<plugin>
+      <groupId>org.mybatis.generator</groupId>
+      <artifactId>mybatis-generator-maven-plugin</artifactId>
+      <version>1.4.1</version>
+      <executions>
+         <execution>
+            <id>Generate MyBatis Artifacts</id>
+            <goals>
+                  <goal>generate</goal>
+            </goals>
+            <configuration>
+                  <configurationFile>
+                     src/main/resources/generator_configuration.xml
+                  </configurationFile>
+                  <overwrite>true</overwrite>
+                  <verbose>true</verbose>
+                  <includeCompileDependencies>true</includeCompileDependencies>
+            </configuration>
+         </execution>
+      </executions>
+</plugin>
+```
+2. 编写generator_configuration.xml，并在pom.xml的properties中添加需要的参数。 
+
+3. 在代码中添加Service层，通过Spring框架特性(DI依赖注入 和 IOC控制反转)编写service层 
+
+4. 删掉不必要的dao包，修改controller相关代码 
+
+5. 更新docker中的数据库，启动docker模拟mysql数据库 
+
+6. 在application.yaml中配置mybatis logger
+
+7. postman文件夹包含http请求的测试文件 
+
+8. 相关资料： https://docs.google.com/document/d/1W-WEgn_n6a072xrFNGE6DYNH5-4_k9inYU07_T2lTp4/edit?usp=sharing

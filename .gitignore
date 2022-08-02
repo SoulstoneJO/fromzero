@@ -34,3 +34,11 @@ build/
 
 # Mac file ignore
 .DS_Store
+
+# Mybatis generator ignore
+# entity
+src/main/java/top/tytcc/learn/repository/entity/generated/
+# mapper
+src/main/java/top/tytcc/learn/repository/mapper/generated/
+# xml
+src/main/resources/top/tytcc/learn/repository/mapper/generated/
