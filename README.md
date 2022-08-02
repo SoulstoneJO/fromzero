@@ -2,21 +2,12 @@
 
 from zero to a project
 
-## 第2步：多人协作(代码风格Checkstyle)和lombok
+## 第3步： 迅速构建开发环境
 
-1. 使用lombok来大量减少胶水代码  
-https://mvnrepository.com/artifact/org.projectlombok/lombok/1.18.24
-将依赖添加到`pom.xml`的`dependency`中
-2.重写dto`User.class`  
-Lombokz注解详细信息： https://zhuanlan.zhihu.com/p/32779910
-***如果注解报红，可以利用idea自动检查以解决**
-2. 安装checkstyle插件，并配置java代码风格。  
-https://checkstyle.sourceforge.io/google_style.html  
-   ** 一般来说在团队合作中，代码风格统一不仅可以方便代码review，还可以减少很多不必要的麻烦。当设置好checkstyle和相应的
-code Style之后可以利用idea的功能将idea的配置全部导出，以方便其它团队成员使用。双击shift,呼出快捷命令，输入`export`,找到
-`export settings`以导出配置。双击shift,呼出快捷命令，输入`import`,找到`import settings`以导入配置。注意，checkstyle插件
-需要额外安装。 
-3. code Style设置  
-![pic6](/static/pic6.png)
-4. CheckStyle设置  
-![pic7](/static/pic7.png)
+1. docker-compose（docker desktop）提供开发环境模拟
+
+2. 登陆dockerhub查询需要的镜像（https://hub.docker.com/）,根据镜像提供方的文档和实际需求编写docker-compose文件。
+
+3. 这里需要模拟mysql，所以要提供mysql的数据库初始化数据(fromzero.sql)和数据库配置文件。(my.cnf)
+
+4. 参考文档：https://docs.google.com/document/d/1yLFXcjGpEv8KzPbSBDPdG70Ez6AgKA_adzRdn30mOg0/edit?usp=sharing
