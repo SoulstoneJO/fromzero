@@ -1,59 +1,53 @@
 # fromzero
-
 from zero to a project
 
-## 第4步： 持久化
-1. 在pom中添加mybatis依赖和mybatis generator plugin插件。
+## 第5步： 复杂SQL语句的编写
+mybatis generator只能解决部分单表查询问题；当面对复杂业务时，经常需要学会mybatis的语法来编写复杂的SQL语句(也有可能是动态SQL语句。)
+
+### 提出问题
+现在前端需要一下的json数据来显示用户信息
 ```
-<!--	SpringBoot 与 mybatis 整合依赖	-->
-<!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
-<dependency>
-   <groupId>org.mybatis.spring.boot</groupId>
-   <artifactId>mybatis-spring-boot-starter</artifactId>
-   <version>2.1.3</version>
-</dependency>
-
-<!--	java 对 mysql 的数据库连接依赖 	-->
-<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-<dependency>
-   <groupId>mysql</groupId>
-   <artifactId>mysql-connector-java</artifactId>
-   <version>8.0.29</version>
-</dependency>
+{
+    "userId": 1,
+    "userName": "tom",
+    "roleName": "管理者",
+    "permissionList": [
+        {
+            "permissionId": 1,
+            "permissionName": "write"
+        },
+        {
+            "permissionId": 2,
+            "permissionName": "read"
+        }
+    ]
+}
 ```
+### 分析问题和组织文件和代码结构
+1. 我们可以发现这个json涉及了三张表[admin, role, permission]的数据, 所以首先我们要尝试编写获取这些数据的SQL语句。首先我可以通过联查admin和role两张表获取userId，userName，roleName和role_permission。其中，role_permission是存在mysql数据库中的json类型，因此需要特别处理。所以，我先做一次双表查询，获取数据后，根据role_permission再做多次单表查询获取permissionList的具体信息。 （单表查询可以利用mybatis generator生成的单表查询语句）
 ```
-<plugin>
-      <groupId>org.mybatis.generator</groupId>
-      <artifactId>mybatis-generator-maven-plugin</artifactId>
-      <version>1.4.1</version>
-      <executions>
-         <execution>
-            <id>Generate MyBatis Artifacts</id>
-            <goals>
-                  <goal>generate</goal>
-            </goals>
-            <configuration>
-                  <configurationFile>
-                     src/main/resources/generator_configuration.xml
-                  </configurationFile>
-                  <overwrite>true</overwrite>
-                  <verbose>true</verbose>
-                  <includeCompileDependencies>true</includeCompileDependencies>
-            </configuration>
-         </execution>
-      </executions>
-</plugin>
-```
-2. 编写generator_configuration.xml，并在pom.xml的properties中添加需要的参数。 
+select 
+  admin.`user_id`, 
+  admin.`user_name`, 
+  role.`role_name`, 
+  role.`role_permission` 
+from 
+  admin 
+  left join role on admin.`user_role` = role.`role_id` 
+where 
+  user_id = 1 # 以user_id=1为示例
+```   
+2. 因为这次请求的request和response都是自定义的实体类，所以需要编写新的java pojo类；在项目源文件添加model包，并新建次级包request和response来存放对应的实体类。(有的时候，这些实体类与orm层的entity结构一致，就不用再编写了)
 
-3. 在代码中添加Service层，通过Spring框架特性(DI依赖注入 和 IOC控制反转)编写service层 
+3. idea Mybatis插件（https://plugins.jetbrains.com/plugin/10119-mybatisx）十分优秀，可以加快开发效率。
 
-4. 删掉不必要的dao包，修改controller相关代码 
+4. 在自动生成的包generated同级下创建customized包, 用来存放所有自定义内容，自定义实体类entity，自定义接口mapper，自定义配置xml文件。
 
-5. 更新docker中的数据库，启动docker模拟mysql数据库 
+5. 处理Json数据的时候所需要的方法可以重复使用，属于Util工具方法，新建common包来存放。
 
-6. 在application.yaml中配置mybatis logger
+6. 完成service代码编写，组装需要的数据。
 
-7. postman文件夹包含http请求的测试文件 
+**java流写法：** 
+**lombok builder**
+  
 
-8. 相关资料： https://docs.google.com/document/d/1W-WEgn_n6a072xrFNGE6DYNH5-4_k9inYU07_T2lTp4/edit?usp=sharing

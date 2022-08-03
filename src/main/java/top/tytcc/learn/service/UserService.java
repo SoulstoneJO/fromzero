@@ -13,9 +13,9 @@ public class UserService {
   @Autowired
   AdminMapper adminMapper;
 
-
   public List<Admin> getUser() {
     final var adminExample = new AdminExample();
     return adminMapper.selectByExample(adminExample);
   }
+
 }
