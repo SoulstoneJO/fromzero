@@ -7,18 +7,18 @@
         <!--    添加@Mapper注解    -->
         <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="${db.connection.url}"
+                        connectionURL="${admin.connection.url}"
                         userId="${db.user.id}"
                         password="${db.password}"/>
 
-        <javaModelGenerator targetPackage="top.tytcc.learn.repository.entity.generated"
+        <javaModelGenerator targetPackage="top.tytcc.learn.repository.entity.admin.generated"
                             targetProject="src/main/java"/>
 
-        <sqlMapGenerator targetPackage="top.tytcc.learn.repository.mapper.generated"
+        <sqlMapGenerator targetPackage="top.tytcc.learn.repository.mapper.admin.generated"
                          targetProject="src/main/resources"/>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="top.tytcc.learn.repository.mapper.generated"
+                             targetPackage="top.tytcc.learn.repository.mapper.admin.generated"
                              targetProject="src/main/java"/>
 
         <table tableName="admin"/>

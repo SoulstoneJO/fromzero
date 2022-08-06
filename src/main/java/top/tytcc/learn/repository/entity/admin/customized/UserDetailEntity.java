@@ -1,4 +1,4 @@
-package top.tytcc.learn.repository.entity.customized;
+package top.tytcc.learn.repository.entity.admin.customized;
 
 import lombok.Data;
 

@@ -3,7 +3,7 @@ package top.tytcc.learn.model.response;
 import java.util.List;
 import lombok.Builder;
 import lombok.Data;
-import top.tytcc.learn.repository.entity.generated.Permission;
+import top.tytcc.learn.repository.entity.admin.generated.Permission;
 
 @Data
 @Builder

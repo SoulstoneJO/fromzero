@@ -37,8 +37,11 @@ build/
 
 # Mybatis generator ignore
 # entity
-src/main/java/top/tytcc/learn/repository/entity/generated/
+src/main/java/top/tytcc/learn/repository/entity/admin/generated/
+src/main/java/top/tytcc/learn/repository/entity/content/generated/
 # mapper
-src/main/java/top/tytcc/learn/repository/mapper/generated/
+src/main/java/top/tytcc/learn/repository/mapper/admin/generated/
+src/main/java/top/tytcc/learn/repository/mapper/content/generated/
 # xml
-src/main/resources/top/tytcc/learn/repository/mapper/generated/
+src/main/resources/top/tytcc/learn/repository/mapper/admin/generated/
+src/main/resources/top/tytcc/learn/repository/mapper/content/generated/

@@ -6,8 +6,8 @@
 # https://github.com/Sequel-Ace/Sequel-Ace
 #
 # Host: localhost (MySQL 8.0.30)
-# Database: from_zero
-# Generation Time: 2022-08-02 06:31:16 +0000
+# Database: from_zero_admin
+# Generation Time: 2022-08-05 03:37:55 +0000
 # ************************************************************
 
 
@@ -19,11 +19,12 @@ SET NAMES utf8mb4;
 /*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE from_zero;
-use from_zero;
 
 # Dump of table admin
 # ------------------------------------------------------------
+
+create Database from_zero_admin;
+use from_zero_admin;
 
 DROP TABLE IF EXISTS `admin`;
 
@@ -31,16 +32,18 @@ CREATE TABLE `admin` (
   `user_id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_name` varchar(100) NOT NULL,
   `user_role` int NOT NULL,
+  `user_mail` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `password` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 
-INSERT INTO `admin` (`user_id`, `user_name`, `user_role`)
+INSERT INTO `admin` (`user_id`, `user_name`, `user_role`, `user_mail`, `password`)
 VALUES
-	(1,'tom',1),
-	(2,'jerry',2);
+	(1,'tom',1,'tom@mail.com','tom'),
+	(2,'jerry',2,'jerry@mail.com','jerry');
 
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;

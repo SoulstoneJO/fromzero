@@ -1,16 +1,18 @@
 package top.tytcc.learn.controller;
 
 import java.util.List;
-import top.tytcc.learn.model.request.UserDetailRequest;
-import top.tytcc.learn.model.response.UserDetailResponse;
-import top.tytcc.learn.repository.entity.generated.Admin;
-import top.tytcc.learn.service.UserDetailService;
-import top.tytcc.learn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import top.tytcc.learn.model.request.UserDetailRequest;
+import top.tytcc.learn.model.response.UserDetailResponse;
+import top.tytcc.learn.repository.entity.admin.generated.Admin;
+import top.tytcc.learn.repository.entity.content.generated.CustomerInfo;
+import top.tytcc.learn.service.CustomerService;
+import top.tytcc.learn.service.UserDetailService;
+import top.tytcc.learn.service.UserService;
 
 /**
  * TestController.
@@ -22,6 +24,8 @@ public class TestController {
       UserService userService;
   @Autowired
   UserDetailService userDetailService;
+  @Autowired
+  CustomerService customerService;
 
   @GetMapping("/get_user") // Get路径
   public List<Admin> getUser() {
@@ -31,6 +35,11 @@ public class TestController {
   @PostMapping("/user_detail")
   public UserDetailResponse userDetail(@RequestBody UserDetailRequest userDetailRequest) {
     return userDetailService.queryUserDetail(userDetailRequest);
+  }
+
+  @GetMapping("/customer_info")
+  public List<CustomerInfo> getCustomerInfo() {
+    return customerService.getCustomerInfo();
   }
 
 }

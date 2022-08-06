@@ -16,12 +16,13 @@
     <description>learn project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
-        <!--    database configuration    -->
-        <db.connection.url>jdbc:mysql://localhost:3306/from_zero</db.connection.url>
-        <db.user.id>root</db.user.id>
-        <db.password>root</db.password>
         <!--    mybatis generator 项目目录配置   -->
         <mybatis.generator.basedir>${project.basedir}</mybatis.generator.basedir>
+        <!--    database configuration    -->
+        <admin.connection.url>jdbc:mysql://localhost:3306/from_zero_admin</admin.connection.url>
+        <content.connection.url>jdbc:mysql://localhost:3306/from_zero_content</content.connection.url>
+        <db.user.id>root</db.user.id>
+        <db.password>root</db.password>
     </properties>
     <dependencies>
         <dependency>
@@ -77,13 +78,27 @@
                 <version>1.4.1</version>
                 <executions>
                     <execution>
-                        <id>Generate MyBatis Artifacts</id>
+                        <id>admin_generator</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
                             <configurationFile>
-                                src/main/resources/generator_configuration.xml
+                                src/main/resources/admin_generator_configuration.xml
+                            </configurationFile>
+                            <overwrite>true</overwrite>
+                            <verbose>true</verbose>
+                            <includeCompileDependencies>true</includeCompileDependencies>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>content_generator</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <configurationFile>
+                                src/main/resources/content_generator_configuration.xml
                             </configurationFile>
                             <overwrite>true</overwrite>
                             <verbose>true</verbose>

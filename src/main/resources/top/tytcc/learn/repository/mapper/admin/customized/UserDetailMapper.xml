@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="top.tytcc.learn.repository.mapper.customized.UserDetailMapper">
+<mapper namespace="top.tytcc.learn.repository.mapper.admin.customized.UserDetailMapper">
     <resultMap id="BaseResultMap"
-               type="top.tytcc.learn.repository.entity.customized.UserDetailEntity">
+               type="top.tytcc.learn.repository.entity.admin.customized.UserDetailEntity">
         <id column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="role_name" jdbcType="VARCHAR" property="roleName"/>

@@ -1,0 +1,26 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 设置defaultModelType https://github.com/mybatis/generator/issues/225(XXXWithBLOBs model if the table has only one BLOB column)  -->
+    <context id="simple" targetRuntime="MyBatis3" defaultModelType="hierarchical">
+        <!--    添加@Mapper注解    -->
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="${content.connection.url}"
+                        userId="${db.user.id}"
+                        password="${db.password}"/>
+
+        <javaModelGenerator targetPackage="top.tytcc.learn.repository.entity.content.generated"
+                            targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="top.tytcc.learn.repository.mapper.content.generated"
+                         targetProject="src/main/resources"/>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="top.tytcc.learn.repository.mapper.content.generated"
+                             targetProject="src/main/java"/>
+
+        <table tableName="customer_info"/>
+    </context>
+</generatorConfiguration>
