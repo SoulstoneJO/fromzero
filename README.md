@@ -1,7 +1,7 @@
 # fromzero
 from zero to a project
 
-## 第6步： 日志及其配置
+## 第7步： 日志及其配置
 
 ### logback教程
 https://www.bilibili.com/video/BV1J3411e7oy?p=1&vd_source=a0e41d36ea33191dc179464ac08ef2b1
