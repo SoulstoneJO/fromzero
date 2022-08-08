@@ -2,6 +2,7 @@ package top.tytcc.learn.service;
 
 import java.util.stream.Collectors;
 import top.tytcc.learn.common.FromZeroUtil;
+import top.tytcc.learn.common.exception.FromZeroParameterException;
 import top.tytcc.learn.model.request.UserDetailRequest;
 import top.tytcc.learn.model.response.UserDetailResponse;
 import top.tytcc.learn.repository.entity.admin.generated.PermissionKey;
@@ -20,9 +21,8 @@ public class UserDetailService {
 
   public UserDetailResponse queryUserDetail(UserDetailRequest request) {
     if (ObjectUtils.isEmpty(request.getUserId())) {
-      //TODO 判断 request 中的参数是否合法。（例如是否为空，为空则需跑出异常）
-      // throw new XXXException() 之后和web应用异常处理一起编写。
-      return UserDetailResponse.builder().build();
+      // TODO message should be set in messageSource
+      throw new FromZeroParameterException("FromZeroParameterException");
     }
 
     final var userDetailEntity = userDetailMapper.selectUserDetailByUserId(request.getUserId());

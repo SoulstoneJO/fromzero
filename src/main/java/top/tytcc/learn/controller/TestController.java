@@ -34,6 +34,7 @@ public class TestController {
 
   @PostMapping("/user_detail")
   public UserDetailResponse userDetail(@RequestBody UserDetailRequest userDetailRequest) {
+    // final var i = 1 / 0; // 测试异常切面用
     return userDetailService.queryUserDetail(userDetailRequest);
   }
 
