@@ -45,3 +45,6 @@ src/main/java/top/tytcc/learn/repository/mapper/content/generated/
 # xml
 src/main/resources/top/tytcc/learn/repository/mapper/admin/generated/
 src/main/resources/top/tytcc/learn/repository/mapper/content/generated/
+
+# 不上传日志文件
+application.log
