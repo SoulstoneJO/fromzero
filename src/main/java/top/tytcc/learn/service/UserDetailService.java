@@ -1,8 +1,12 @@
 package top.tytcc.learn.service;
 
+import java.util.Locale;
 import java.util.stream.Collectors;
+
+import org.springframework.context.MessageSource;
 import top.tytcc.learn.common.FromZeroUtil;
 import top.tytcc.learn.common.exception.FromZeroParameterException;
+import top.tytcc.learn.constant.MessageCode;
 import top.tytcc.learn.model.request.UserDetailRequest;
 import top.tytcc.learn.model.response.UserDetailResponse;
 import top.tytcc.learn.repository.entity.admin.generated.PermissionKey;
@@ -18,11 +22,12 @@ public class UserDetailService {
   UserDetailMapper userDetailMapper;
   @Autowired
   PermissionMapper permissionMapper;
+  @Autowired
+  MessageSource messageSource;
 
-  public UserDetailResponse queryUserDetail(UserDetailRequest request) {
+  public UserDetailResponse queryUserDetail(UserDetailRequest request, String language) {
     if (ObjectUtils.isEmpty(request.getUserId())) {
-      // TODO message should be set in messageSource
-      throw new FromZeroParameterException("FromZeroParameterException");
+      throw new FromZeroParameterException(messageSource.getMessage(MessageCode.PARAM_USERID_EMPTY, null, new Locale(language)));
     }
 
     final var userDetailEntity = userDetailMapper.selectUserDetailByUserId(request.getUserId());
