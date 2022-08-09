@@ -3,8 +3,9 @@ package top.tytcc.learn.constant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-
 public class ConfigConstant {
+  public static final String INFO_ID_PARAM="info_id";
+  public static final String API_KEY_PARAM="X-API-KEY";
 
   @AllArgsConstructor
   public enum ResultCode {
