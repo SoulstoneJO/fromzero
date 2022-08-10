@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "dfc99d0f-38dc-4ce2-a61d-b5c3dd8f10a1",
+		"name": "from_zero_mock",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14809918"
+	},
+	"item": [
+		{
+			"name": "test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "PMAK-62f1e136940c297c174fa0f3-b9ab7ee196e4c7894775d13569eaca9562",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/test?info_id=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test"
+					],
+					"query": [
+						{
+							"key": "info_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/test?info_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"test"
+							],
+							"query": [
+								{
+									"key": "info_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"info_id\": \"1\",\n    \"info\": {\n        \"type\": \"1\",\n        \"message\": \"This is a message.\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

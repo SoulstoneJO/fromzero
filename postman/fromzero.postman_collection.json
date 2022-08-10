@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "c8808333-e6bd-498a-a580-280d78e453b2",
+		"name": "fromzero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14809918"
+	},
+	"item": [
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/get_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"get_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remote_test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/remote_test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"remote_test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserDetail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "language",
+						"value": "ja",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userd\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user_detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user_detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCustomerInfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customer_info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customer_info"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
