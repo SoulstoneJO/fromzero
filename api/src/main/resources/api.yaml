@@ -1,0 +1,146 @@
+openapi: 3.0.0
+info:
+  title: TYTCC Learning API
+  description: A Project for learning.
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: test server
+tags:
+  - name: Test Controller
+paths:
+  /user_detail:
+    post:
+      description: An API to get user's detail.
+      operationId: user-detail
+      tags:
+        - Test Controller
+      parameters:
+        - name: language
+          in: header
+          required: true
+          description: language.
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserDetailRequest"
+      responses:
+        '200':
+          description: user detail response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetailResponse"
+  /customer_info:
+    get:
+      description: An API to get customer's info.
+      operationId: customer-info
+      tags:
+        - Test Controller
+      responses:
+        '200':
+          description: customer info response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CustomerInfoListResponse"
+  /remote_test:
+    get:
+      description: An API to test remote call.
+      operationId: remote-test
+      tags:
+        - Test Controller
+      responses:
+        '200':
+          description: remote test response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RemoteTestResponse"
+components:
+  schemas:
+    UserDetailRequest:
+      type: object
+      description: user-detail request entity
+      properties:
+        userId:
+          type: integer
+          description: user id
+    UserDetailResponse:
+      type: object
+      description: user-detail response entity
+      properties:
+        userId:
+          type: integer
+          description: user id
+        userName:
+          type: string
+          description: user name
+        roleName:
+          type: string
+          description: role name
+        permissionList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Permission"
+    Permission:
+      type: object
+      description: permission entity
+      properties:
+        permissionId:
+          type: integer
+          description: permission id
+        permissionName:
+          type: string
+          description: permission name
+    CustomerInfoListResponse:
+      type: array
+      description: customer info response
+      items:
+        $ref: "#/components/schemas/CustomerInfo"
+    CustomerInfo:
+      type: object
+      description: customer info
+      properties:
+        customerId:
+          type: integer
+          description: customer id
+        customerName:
+          type: string
+          description: customer name
+        mobilePhone:
+          type: string
+          description: phone Number
+        customerEmail:
+          type: string
+          description: customer mail
+        gender:
+          type: boolean
+          description: gender
+        birthday:
+          type: string
+          description: birthday
+        customerLevel:
+          type: integer
+          description: customer level
+    RemoteTestResponse:
+      type: object
+      description: remote test response
+      properties:
+        infoId:
+          type: string
+          description: info id
+        info:
+          $ref: "#/components/schemas/InfoRemote"
+    InfoRemote:
+      type: object
+      properties:
+        type:
+          type: string
+          description: type
+        message:
+          type: string
+          description: message

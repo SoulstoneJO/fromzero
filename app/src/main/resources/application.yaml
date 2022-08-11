@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  datasource:
+    admin:
+      jdbc-url: jdbc:mysql://localhost:3306/from_zero_admin
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    content:
+      jdbc-url: jdbc:mysql://localhost:3306/from_zero_content
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+remote:
+  max-memory-size: 10485760
+  time-out: 60000
+
+# test remote url params
+test_remote_base_url: ${TEST_REMOTE_BASE_URL:https://1303a084-cbcb-4201-87f5-8d7afec5e23c.mock.pstmn.io/}
+test_remote_uri_path: ${TEST_REMOTE_URI_PATH:test}
+test_remote_query_param_value: ${TEST_REMOTE_QUERY_PARAM_VALUE:1}
+x_api_key: ${X_API_KEY:PMAK-62f1e136940c297c174fa0f3-b9ab7ee196e4c7894775d13569eaca9562}

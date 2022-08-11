@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="dev">
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+        <!--  Spring web log  -->
+        <logger name="org.springframework.web" level="DEBUG"/>
+        <!--  Mybatis Mapper log  -->
+        <logger name="top.tytcc.learn.repository.mapper" level="DEBUG"/>
+    </springProfile>
+    <springProfile name="stg | prd">
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>application.log</file>
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <fileNamePattern>application.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+                <maxFileSize>500MB</maxFileSize>
+                <maxHistory>10</maxHistory>
+            </rollingPolicy>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="FILE" />
+        </root>
+        <!--  Spring web log  -->
+        <logger name="org.springframework.web" level="DEBUG"/>
+        <!--  Mybatis Mapper log  -->
+        <logger name="top.tytcc.learn.repository.mapper" level="DEBUG"/>
+    </springProfile>
+</configuration>

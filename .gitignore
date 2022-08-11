@@ -1,0 +1,53 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### MAC ###
+.DS_Store
+
+# api generated objects
+api/.openapi-generator
+api/src/main/java/
+!api/src/main/java/.gitkeep
+
+# generated entity
+app/src/main/java/top/tytcc/learn/repository/entity/admin/generated
+app/src/main/java/top/tytcc/learn/repository/entity/content/generated
+
+# generated mapper
+app/src/main/java/top/tytcc/learn/repository/mapper/admin/generated
+app/src/main/java/top/tytcc/learn/repository/mapper/content/generated
+
+# generated xml
+app/src/main/resources/top/tytcc/learn/repository/mapper/admin/generated
+app/src/main/resources/top/tytcc/learn/repository/mapper/content/generated
